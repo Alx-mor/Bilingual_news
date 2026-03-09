@@ -319,9 +319,10 @@ async function updateInfo() {
 
 
   // store frame rate of monitor if we can measure it successfully
+  let frameDur;
   expInfo['frameRate'] = psychoJS.window.getActualFrameRate();
   if (typeof expInfo['frameRate'] !== 'undefined')
-    let frameDur = 1.0 / Math.round(expInfo['frameRate']);
+    frameDur = 1.0 / Math.round(expInfo['frameRate']);
   else
     frameDur = 1.0 / 60.0; // couldn't get a reliable measure so guess
 
