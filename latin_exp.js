@@ -834,7 +834,7 @@ function setupRoutineBegin(snapshot) {
     let continueRoutine = true; // until we're told otherwise
     // keep track of whether this Routine was forcibly ended
     let routineForceEnded = false;
-    setupClock.reset();
+    let setupClock.reset();
     routineTimer.reset();
     let setupMaxDurationReached = false;
     // update component parameters for each repeat
