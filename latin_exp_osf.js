@@ -322,6 +322,7 @@ async function updateInfo() {
 
 
   // store frame rate of monitor if we can measure it successfully
+  let frameDur;
   expInfo['frameRate'] = psychoJS.window.getActualFrameRate();
   if (typeof expInfo['frameRate'] !== 'undefined')
     frameDur = 1.0 / Math.round(expInfo['frameRate']);
@@ -2920,4 +2921,5 @@ async function quitPsychoJS(message, isCompleted) {
   
   return Scheduler.Event.QUIT;
 }
+
 
