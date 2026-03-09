@@ -2640,7 +2640,7 @@ function osfRoutineBegin(snapshot) {
     routineTimer.add(5.000000);
     osfMaxDurationReached = false;
     // update component parameters for each repeat
-    / Disable downloading results to browser
+    // Disable downloading results to browser
     psychoJS._saveResults = 0; 
     // Generate filename for results
     let filename = psychoJS._experiment._experimentName + '_' + 
@@ -2781,3 +2781,4 @@ async function quitPsychoJS(message, isCompleted) {
   
   return Scheduler.Event.QUIT;
 }
+
