@@ -305,7 +305,7 @@ psychoJS.start({
     {'name': 'headlines/en_stmt_119.png', 'path': 'headlines/en_stmt_119.png'},
     {'name': 'headlines/ru_stmt_120.png', 'path': 'headlines/ru_stmt_120.png'},
     {'name': 'headlines/en_stmt_120.png', 'path': 'headlines/en_stmt_120.png'},
-    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
+    {'name': 'default.png', 'path': 'default.png'},
   ]
 });
 
