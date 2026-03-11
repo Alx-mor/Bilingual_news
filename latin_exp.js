@@ -18,7 +18,119 @@ let expInfo = {
     'group': 'auto',
 };
 let PILOTING = util.getUrlParameters().has('__pilotToken');
-let text_count;
+
+// Component and clock variables (declared at module level for cross-function access)
+let currentLoop;
+let frameDur;
+let setupClock;
+let list_version;
+let lang_map;
+let InstructionClock;
+let text_2;
+let proceed;
+let trialClock;
+let text;
+let image;
+let proceed_2;
+let ratings_ruClock;
+let Credibility;
+let Familiarity;
+let Valence;
+let key_resp;
+let cred_text;
+let fam_text;
+let val_text;
+let text_continue;
+let corr_ruClock;
+let image_2;
+let overlay;
+let corr;
+let rate_corr_ruClock;
+let cred_corr;
+let text_cred;
+let conf_corr;
+let text_conf;
+let press;
+let proc;
+let ratings_enClock;
+let Credibility_2;
+let Familiarity_2;
+let Valence_2;
+let Understanding;
+let key_resp_2;
+let cred_text_2;
+let fam_text_2;
+let val_text_2;
+let und_text;
+let text_continue_2;
+let corr_enClock;
+let image_3;
+let overlay_2;
+let corr_2;
+let rate_corr_enClock;
+let cred_corr_2;
+let text_cred_2;
+let conf_corr_2;
+let text_conf_2;
+let press_2;
+let proc_2;
+let osfClock;
+let text_wait;
+let globalClock;
+let routineTimer;
+let trials;
+
+// Routine-shared variables (declared at module level for cross-function access)
+let t;
+let frameN;
+let continueRoutine;
+let routineForceEnded;
+let frameRemains;
+let setupMaxDurationReached;
+let setupMaxDuration;
+let setupComponents;
+let InstructionMaxDurationReached;
+let _proceed_allKeys;
+let InstructionMaxDuration;
+let InstructionComponents;
+let trialMaxDurationReached;
+let _proceed_2_allKeys;
+let trialMaxDuration;
+let trialComponents;
+let ratings_ruMaxDurationReached;
+let _key_resp_allKeys;
+let ratings_ruMaxDuration;
+let ratings_ruComponents;
+let corr_ruMaxDurationReached;
+let corr_ruMaxDuration;
+let corr_ruComponents;
+let rate_corr_ruMaxDurationReached;
+let _press_allKeys;
+let rate_corr_ruMaxDuration;
+let rate_corr_ruComponents;
+let ratings_enMaxDurationReached;
+let _key_resp_2_allKeys;
+let ratings_enMaxDuration;
+let ratings_enComponents;
+let corr_enMaxDurationReached;
+let corr_enMaxDuration;
+let corr_enComponents;
+let rate_corr_enMaxDurationReached;
+let _press_2_allKeys;
+let rate_corr_enMaxDuration;
+let rate_corr_enComponents;
+let osfMaxDurationReached;
+let osfMaxDuration;
+let osfComponents;
+
+// Cross-routine trial variables
+let current_set;
+let current_lang;
+let headline;
+let instruction_text;
+let trial_text;
+let corr_img;
+
 
 // Start code blocks for 'Before Experiment'
 // Run 'Before Experiment' code from setup_code
@@ -305,15 +417,12 @@ psychoJS.start({
     {'name': 'headlines/en_stmt_119.png', 'path': 'headlines/en_stmt_119.png'},
     {'name': 'headlines/ru_stmt_120.png', 'path': 'headlines/ru_stmt_120.png'},
     {'name': 'headlines/en_stmt_120.png', 'path': 'headlines/en_stmt_120.png'},
-    {'name': 'default.png', 'path': 'default.png'},
+    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
   ]
 });
 
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.INFO);
 
-
-var currentLoop;
-var frameDur;
 async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
@@ -341,70 +450,13 @@ async function updateInfo() {
   return Scheduler.Event.NEXT;
 }
 
-
-var setupClock;
-var list_version;
-var lang_map;
-var InstructionClock;
-var text_2;
-var proceed;
-var trialClock;
-var text_count;
-var text;
-var image;
-var proceed_2;
-var ratings_ruClock;
-var Credibility;
-var Familiarity;
-var Valence;
-var key_resp;
-var cred_text;
-var fam_text;
-var val_text;
-var text_continue;
-var corr_ruClock;
-var image_2;
-var overlay;
-var corr;
-var rate_corr_ruClock;
-var cred_corr;
-var text_cred;
-var conf_corr;
-var text_conf;
-var press;
-var proc;
-var ratings_enClock;
-var Credibility_2;
-var Familiarity_2;
-var Valence_2;
-var Understanding;
-var key_resp_2;
-var cred_text_2;
-var fam_text_2;
-var val_text_2;
-var und_text;
-var text_continue_2;
-var corr_enClock;
-var image_3;
-var overlay_2;
-var corr_2;
-var rate_corr_enClock;
-var cred_corr_2;
-var text_cred_2;
-var conf_corr_2;
-var text_conf_2;
-var press_2;
-var proc_2;
-var osfClock;
-var text_wait;
-var globalClock;
-var routineTimer;
 async function experimentInit() {
   // Initialize components for Routine "setup"
   setupClock = new util.Clock();
   // Run 'Begin Experiment' code from setup_code
   list_version = [1, 2][Math.floor(Math.random() * 2)];
   
+  lang_map;
   if ((list_version === 1)) {
       lang_map = {"A": "RU", "B": "EN"};
   } else {
@@ -431,31 +483,7 @@ async function experimentInit() {
   
   // Initialize components for Routine "trial"
   trialClock = new util.Clock();
-  text_count = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'text_count',
-    text: '',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, 0.4], draggable: false, height: 0.04,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -1.0 
-  });
-  
-  text_count = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'text_count',
-    text: '',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, 0.4], draggable: false, height: 0.04,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -1.0 
-  });
-  
-    text = new visual.TextStim({
+  text = new visual.TextStim({
     win: psychoJS.window,
     name: 'text',
     text: '',
@@ -464,7 +492,7 @@ async function experimentInit() {
     pos: [0, (- 0.4)], draggable: false, height: 0.035,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
-    depth: -2.0 
+    depth: -1.0 
   });
   
   image = new visual.ImageStim({
@@ -478,7 +506,7 @@ async function experimentInit() {
     size : [1.0, 1.0],
     color : new util.Color([1,1,1]), opacity : undefined,
     flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -3.0 
+    texRes : 128.0, interpolate : true, depth : -2.0 
   });
   proceed_2 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
@@ -908,14 +936,6 @@ async function experimentInit() {
   return Scheduler.Event.NEXT;
 }
 
-
-var t;
-var frameN;
-var continueRoutine;
-var routineForceEnded;
-var setupMaxDurationReached;
-var setupMaxDuration;
-var setupComponents;
 function setupRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -941,7 +961,6 @@ function setupRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function setupRoutineEachFrame() {
   return async function () {
@@ -977,7 +996,6 @@ function setupRoutineEachFrame() {
   };
 }
 
-
 function setupRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'setup' ---
@@ -998,11 +1016,6 @@ function setupRoutineEnd(snapshot) {
   }
 }
 
-
-var InstructionMaxDurationReached;
-var _proceed_allKeys;
-var InstructionMaxDuration;
-var InstructionComponents;
 function InstructionRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1033,7 +1046,6 @@ function InstructionRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function InstructionRoutineEachFrame() {
   return async function () {
@@ -1113,7 +1125,6 @@ function InstructionRoutineEachFrame() {
   };
 }
 
-
 function InstructionRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'Instruction' ---
@@ -1146,8 +1157,6 @@ function InstructionRoutineEnd(snapshot) {
   }
 }
 
-
-var trials;
 function trialsLoopBegin(trialsLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1165,7 +1174,7 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
     
     // Schedule all the trials in the trialList:
     for (const thisTrial of trials) {
-      snapshot = trials.getSnapshot();
+      let snapshot = trials.getSnapshot();
       trialsLoopScheduler.add(importConditions(snapshot));
       trialsLoopScheduler.add(trialRoutineBegin(snapshot));
       trialsLoopScheduler.add(trialRoutineEachFrame());
@@ -1195,7 +1204,6 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
   }
 }
 
-
 async function trialsLoopEnd() {
   // terminate loop
   psychoJS.experiment.removeLoop(trials);
@@ -1206,7 +1214,6 @@ async function trialsLoopEnd() {
     currentLoop = psychoJS.experiment;  // so we use addData from the experiment
   return Scheduler.Event.NEXT;
 }
-
 
 function trialsLoopEndIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
@@ -1227,15 +1234,6 @@ function trialsLoopEndIteration(scheduler, snapshot) {
   };
 }
 
-
-var trialMaxDurationReached;
-var current_set;
-var current_lang;
-var headline;
-var instruction_text;
-var _proceed_2_allKeys;
-var trialMaxDuration;
-var trialComponents;
 function trialRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1253,6 +1251,9 @@ function trialRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from trial_code
     current_set = Set;
     current_lang = lang_map[current_set];
+    headline;
+    instruction_text;
+    trial_text;
     if ((current_lang === "RU")) {
         headline = ru_pic;
         instruction_text = "Нажмите ПРОБЕЛ для продолжения.";
@@ -1265,8 +1266,6 @@ function trialRoutineBegin(snapshot) {
         }
     }
     
-    text_count.setText(`${(trials.thisN + 1)}/${trials.nTotal}`);
-    text_count.setText(`${(trials.thisN + 1)}/${trials.nTotal}`);
     text.setText(instruction_text);
     image.setImage(headline);
     proceed_2.keys = undefined;
@@ -1276,7 +1275,6 @@ function trialRoutineBegin(snapshot) {
     trialMaxDuration = null
     // keep track of which components have finished
     trialComponents = [];
-    trialComponents.push(text_count);
     trialComponents.push(text);
     trialComponents.push(image);
     trialComponents.push(proceed_2);
@@ -1288,7 +1286,6 @@ function trialRoutineBegin(snapshot) {
   }
 }
 
-
 function trialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'trial' ---
@@ -1297,37 +1294,7 @@ function trialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *text_count* updates
-    if (t >= 0.0 && text_count.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      text_count.tStart = t;  // (not accounting for frame time here)
-      text_count.frameNStart = frameN;  // exact frame index
-      
-      text_count.setAutoDraw(true);
-    }
-    
-    
-    // if text_count is active this frame...
-    if (text_count.status === PsychoJS.Status.STARTED) {
-    }
-    
-    
-    // *text_count* updates
-    if (t >= 0.0 && text_count.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      text_count.tStart = t;  // (not accounting for frame time here)
-      text_count.frameNStart = frameN;  // exact frame index
-      
-      text_count.setAutoDraw(true);
-    }
-    
-    
-    // if text_count is active this frame...
-    if (text_count.status === PsychoJS.Status.STARTED) {
-    }
-    
-    
-        // *text* updates
+    // *text* updates
     if (t >= 0.0 && text.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       text.tStart = t;  // (not accounting for frame time here)
@@ -1412,7 +1379,6 @@ function trialRoutineEachFrame() {
   };
 }
 
-
 function trialRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'trial' ---
@@ -1450,11 +1416,6 @@ function trialRoutineEnd(snapshot) {
   }
 }
 
-
-var ratings_ruMaxDurationReached;
-var _key_resp_allKeys;
-var ratings_ruMaxDuration;
-var ratings_ruComponents;
 function ratings_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1499,8 +1460,6 @@ function ratings_ruRoutineBegin(snapshot) {
   }
 }
 
-
-var keys;
 function ratings_ruRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'ratings_ru' ---
@@ -1508,14 +1467,6 @@ function ratings_ruRoutineEachFrame() {
     t = ratings_ruClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    // Run 'Each Frame' code from rating_code
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if ((((Credibility.getRating() !== null) && (Familiarity.getRating() !== null)) && (Valence.getRating() !== null))) {
-            continueRoutine = false;
-        }
-    }
-    
     
     // *Credibility* updates
     if (t >= 0.0 && Credibility.status === PsychoJS.Status.NOT_STARTED) {
@@ -1677,7 +1628,6 @@ function ratings_ruRoutineEachFrame() {
   };
 }
 
-
 function ratings_ruRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'ratings_ru' ---
@@ -1716,11 +1666,6 @@ function ratings_ruRoutineEnd(snapshot) {
   }
 }
 
-
-var corr_ruMaxDurationReached;
-var corr_img;
-var corr_ruMaxDuration;
-var corr_ruComponents;
 function corr_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1737,6 +1682,7 @@ function corr_ruRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from corr_code
     continueRoutine = (current_lang === "RU");
+    corr_img;
     if ((text_veracity === "T")) {
         corr_img = "corrections/ru_true.png";
     } else {
@@ -1764,8 +1710,6 @@ function corr_ruRoutineBegin(snapshot) {
   }
 }
 
-
-var frameRemains;
 function corr_ruRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'corr_ru' ---
@@ -1875,7 +1819,6 @@ function corr_ruRoutineEachFrame() {
   };
 }
 
-
 function corr_ruRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'corr_ru' ---
@@ -1904,11 +1847,6 @@ function corr_ruRoutineEnd(snapshot) {
   }
 }
 
-
-var rate_corr_ruMaxDurationReached;
-var _press_allKeys;
-var rate_corr_ruMaxDuration;
-var rate_corr_ruComponents;
 function rate_corr_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1950,7 +1888,6 @@ function rate_corr_ruRoutineBegin(snapshot) {
   }
 }
 
-
 function rate_corr_ruRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'rate_corr_ru' ---
@@ -1958,14 +1895,6 @@ function rate_corr_ruRoutineEachFrame() {
     t = rate_corr_ruClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    // Run 'Each Frame' code from rate_corr
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if (((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null))) {
-            continueRoutine = false;
-        }
-    }
-    
     
     // *cred_corr* updates
     if (t >= 0.0 && cred_corr.status === PsychoJS.Status.NOT_STARTED) {
@@ -2097,7 +2026,6 @@ function rate_corr_ruRoutineEachFrame() {
   };
 }
 
-
 function rate_corr_ruRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'rate_corr_ru' ---
@@ -2134,11 +2062,6 @@ function rate_corr_ruRoutineEnd(snapshot) {
   }
 }
 
-
-var ratings_enMaxDurationReached;
-var _key_resp_2_allKeys;
-var ratings_enMaxDuration;
-var ratings_enComponents;
 function ratings_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2186,7 +2109,6 @@ function ratings_enRoutineBegin(snapshot) {
   }
 }
 
-
 function ratings_enRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'ratings_en' ---
@@ -2194,14 +2116,6 @@ function ratings_enRoutineEachFrame() {
     t = ratings_enClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    // Run 'Each Frame' code from code
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if (((((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null)) && (Valence_2.getRating() !== null)) && (Understanding.getRating() !== null))) {
-            continueRoutine = false;
-        }
-    }
-    
     
     // *Credibility_2* updates
     if (t >= 0.0 && Credibility_2.status === PsychoJS.Status.NOT_STARTED) {
@@ -2393,7 +2307,6 @@ function ratings_enRoutineEachFrame() {
   };
 }
 
-
 function ratings_enRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'ratings_en' ---
@@ -2434,10 +2347,6 @@ function ratings_enRoutineEnd(snapshot) {
   }
 }
 
-
-var corr_enMaxDurationReached;
-var corr_enMaxDuration;
-var corr_enComponents;
 function corr_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2454,6 +2363,7 @@ function corr_enRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from corr_code_2
     continueRoutine = (current_lang === "EN");
+    corr_img;
     if ((text_veracity === "T")) {
         corr_img = "corrections/en_true.png";
     } else {
@@ -2480,7 +2390,6 @@ function corr_enRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function corr_enRoutineEachFrame() {
   return async function () {
@@ -2591,7 +2500,6 @@ function corr_enRoutineEachFrame() {
   };
 }
 
-
 function corr_enRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'corr_en' ---
@@ -2620,11 +2528,6 @@ function corr_enRoutineEnd(snapshot) {
   }
 }
 
-
-var rate_corr_enMaxDurationReached;
-var _press_2_allKeys;
-var rate_corr_enMaxDuration;
-var rate_corr_enComponents;
 function rate_corr_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2666,7 +2569,6 @@ function rate_corr_enRoutineBegin(snapshot) {
   }
 }
 
-
 function rate_corr_enRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'rate_corr_en' ---
@@ -2674,14 +2576,6 @@ function rate_corr_enRoutineEachFrame() {
     t = rate_corr_enClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    // Run 'Each Frame' code from rate_corr_2
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if (((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null))) {
-            continueRoutine = false;
-        }
-    }
-    
     
     // *cred_corr_2* updates
     if (t >= 0.0 && cred_corr_2.status === PsychoJS.Status.NOT_STARTED) {
@@ -2813,7 +2707,6 @@ function rate_corr_enRoutineEachFrame() {
   };
 }
 
-
 function rate_corr_enRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'rate_corr_en' ---
@@ -2850,10 +2743,6 @@ function rate_corr_enRoutineEnd(snapshot) {
   }
 }
 
-
-var osfMaxDurationReached;
-var osfMaxDuration;
-var osfComponents;
 function osfRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2876,7 +2765,7 @@ function osfRoutineBegin(snapshot) {
     // Extract data object from experiment
     let dataObj = psychoJS._experiment._trialsData; 
     // Convert data object to CSV
-    let data = [Object.keys(databObj[0])].concat(databObj).map(it => { 
+    let data = [Object.keys(dataObj[0])].concat(dataObj).map(it => { 
     return Object.values(it).toString()
     }).join('\n')
     // Send data to OSF via DataPipe 
@@ -2908,7 +2797,6 @@ function osfRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function osfRoutineEachFrame() {
   return async function () {
@@ -2969,7 +2857,6 @@ function osfRoutineEachFrame() {
   };
 }
 
-
 function osfRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'osf' ---
@@ -2993,14 +2880,12 @@ function osfRoutineEnd(snapshot) {
   }
 }
 
-
 function importConditions(currentLoop) {
   return async function () {
     psychoJS.importAttributes(currentLoop.getCurrentTrial());
     return Scheduler.Event.NEXT;
     };
 }
-
 
 async function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
