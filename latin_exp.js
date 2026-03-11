@@ -422,7 +422,7 @@ psychoJS.start({
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.INFO);
 
 
-var currentLoop;
+//var currentLoop;
 var frameDur;
 async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
