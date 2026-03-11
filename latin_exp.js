@@ -19,7 +19,7 @@ let expInfo = {
 };
 let PILOTING = util.getUrlParameters().has('__pilotToken');
 
-// ── Additional variables declared at module level ──
+// ── Variables declared at module level for cross-function access ──
 let trial_text;
 
 
