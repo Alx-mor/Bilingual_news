@@ -1308,6 +1308,18 @@ function trialRoutineEachFrame() {
     t = trialClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
+
+    // *text_count* updates
+    if (t >= 0.0 && text_count.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_count.tStart = t;  // (not accounting for frame time here)
+      text_count.frameNStart = frameN;  // exact frame index
+      
+      text_count.setAutoDraw(true);
+    }
+    // if text_count is active this frame...
+    if (text_count.status === PsychoJS.Status.STARTED) {
+    }
     
     // *text* updates
     if (t >= 0.0 && text.status === PsychoJS.Status.NOT_STARTED) {
@@ -1317,7 +1329,6 @@ function trialRoutineEachFrame() {
       
       text.setAutoDraw(true);
     }
-    
     
     // if text is active this frame...
     if (text.status === PsychoJS.Status.STARTED) {
