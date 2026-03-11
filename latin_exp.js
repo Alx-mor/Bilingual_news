@@ -82,6 +82,7 @@ let trials;
 
 // Routine-shared variables (declared at module level for cross-function access)
 let t;
+let text_count;
 let frameN;
 let continueRoutine;
 let routineForceEnded;
@@ -417,7 +418,7 @@ psychoJS.start({
     {'name': 'headlines/en_stmt_119.png', 'path': 'headlines/en_stmt_119.png'},
     {'name': 'headlines/ru_stmt_120.png', 'path': 'headlines/ru_stmt_120.png'},
     {'name': 'headlines/en_stmt_120.png', 'path': 'headlines/en_stmt_120.png'},
-    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
+    {'name': 'default.png', 'path': 'default.png'},
   ]
 });
 
@@ -483,6 +484,18 @@ async function experimentInit() {
   
   // Initialize components for Routine "trial"
   trialClock = new util.Clock();
+  text_count = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_count',
+    text: '',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0.4], draggable: false, height: 0.04,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+    
   text = new visual.TextStim({
     win: psychoJS.window,
     name: 'text',
