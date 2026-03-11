@@ -1558,6 +1558,8 @@ function ratings_ruRoutineEachFrame() {
         // only end routine if all sliders are rated
         if ((Credibility.getRating() !== null) && (Familiarity.getRating() !== null) && (Valence.getRating() !== null)) {
           continueRoutine = false;
+        } else {
+          _key_resp_allKeys = [];  // clear buffer so Space must be pressed again after rating
         }
       }
     }
@@ -2020,6 +2022,8 @@ function rate_corr_ruRoutineEachFrame() {
         // only end routine if all sliders are rated
         if ((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null)) {
           continueRoutine = false;
+        } else {
+          _press_allKeys = [];  // clear buffer so Space must be pressed again after rating
         }
       }
     }
@@ -2253,6 +2257,8 @@ function ratings_enRoutineEachFrame() {
         // only end routine if all sliders are rated
         if ((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null) && (Valence_2.getRating() !== null) && (Understanding.getRating() !== null)) {
           continueRoutine = false;
+        } else {
+          _key_resp_2_allKeys = [];  // clear buffer so Space must be pressed again after rating
         }
       }
     }
@@ -2730,6 +2736,8 @@ function rate_corr_enRoutineEachFrame() {
         // only end routine if all sliders are rated
         if ((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null)) {
           continueRoutine = false;
+        } else {
+          _press_2_allKeys = [];  // clear buffer so Space must be pressed again after rating
         }
       }
     }
