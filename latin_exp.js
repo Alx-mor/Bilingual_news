@@ -1484,14 +1484,7 @@ function ratings_ruRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rating_code
-    if (key_resp.status === PsychoJS.Status.STARTED) {
-        keys = key_resp.getKeys(["space"], {"waitRelease": false});
-        if (keys) {
-            if ((((Credibility.getRating() !== null) && (Familiarity.getRating() !== null)) && (Valence.getRating() !== null))) {
-                continueRoutine = false;
-            }
-        }
-    }
+
     
     
     // *Credibility* updates
@@ -1562,8 +1555,10 @@ function ratings_ruRoutineEachFrame() {
         key_resp.keys = _key_resp_allKeys[_key_resp_allKeys.length - 1].name;  // just the last key pressed
         key_resp.rt = _key_resp_allKeys[_key_resp_allKeys.length - 1].rt;
         key_resp.duration = _key_resp_allKeys[_key_resp_allKeys.length - 1].duration;
-        // a response ends the routine
-        continueRoutine = false;
+        // only end routine if all sliders are rated
+        if ((Credibility.getRating() !== null) && (Familiarity.getRating() !== null) && (Valence.getRating() !== null)) {
+          continueRoutine = false;
+        }
       }
     }
     
@@ -1936,14 +1931,7 @@ function rate_corr_ruRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rate_corr
-    if (key_resp.status === PsychoJS.Status.STARTED) {
-        keys = key_resp.getKeys(["space"], {"waitRelease": false});
-        if (keys) {
-            if (((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null))) {
-                continueRoutine = false;
-            }
-        }
-    }
+
     
     
     // *cred_corr* updates
@@ -2029,8 +2017,10 @@ function rate_corr_ruRoutineEachFrame() {
         press.keys = _press_allKeys[_press_allKeys.length - 1].name;  // just the last key pressed
         press.rt = _press_allKeys[_press_allKeys.length - 1].rt;
         press.duration = _press_allKeys[_press_allKeys.length - 1].duration;
-        // a response ends the routine
-        continueRoutine = false;
+        // only end routine if all sliders are rated
+        if ((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null)) {
+          continueRoutine = false;
+        }
       }
     }
     
@@ -2174,14 +2164,7 @@ function ratings_enRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from code
-    if (key_resp_2.status === PsychoJS.Status.STARTED) {
-        keys = key_resp_2.getKeys(["space"], {"waitRelease": false});
-        if (keys) {
-            if (((((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null)) && (Valence_2.getRating() !== null)) && (Understanding.getRating() !== null))) {
-                continueRoutine = false;
-            }
-        }
-    }
+
     
     
     // *Credibility_2* updates
@@ -2267,8 +2250,10 @@ function ratings_enRoutineEachFrame() {
         key_resp_2.keys = _key_resp_2_allKeys[_key_resp_2_allKeys.length - 1].name;  // just the last key pressed
         key_resp_2.rt = _key_resp_2_allKeys[_key_resp_2_allKeys.length - 1].rt;
         key_resp_2.duration = _key_resp_2_allKeys[_key_resp_2_allKeys.length - 1].duration;
-        // a response ends the routine
-        continueRoutine = false;
+        // only end routine if all sliders are rated
+        if ((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null) && (Valence_2.getRating() !== null) && (Understanding.getRating() !== null)) {
+          continueRoutine = false;
+        }
       }
     }
     
@@ -2656,14 +2641,7 @@ function rate_corr_enRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rate_corr_2
-    if (press_2.status === PsychoJS.Status.STARTED) {
-        keys = press_2.getKeys(["space"], {"waitRelease": false});
-        if (keys) {
-            if (((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null))) {
-                continueRoutine = false;
-            }
-        }
-    }
+
     
     
     // *cred_corr_2* updates
@@ -2749,8 +2727,10 @@ function rate_corr_enRoutineEachFrame() {
         press_2.keys = _press_2_allKeys[_press_2_allKeys.length - 1].name;  // just the last key pressed
         press_2.rt = _press_2_allKeys[_press_2_allKeys.length - 1].rt;
         press_2.duration = _press_2_allKeys[_press_2_allKeys.length - 1].duration;
-        // a response ends the routine
-        continueRoutine = false;
+        // only end routine if all sliders are rated
+        if ((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null)) {
+          continueRoutine = false;
+        }
       }
     }
     
