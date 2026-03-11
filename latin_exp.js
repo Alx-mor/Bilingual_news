@@ -1484,10 +1484,12 @@ function ratings_ruRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rating_code
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if ((((Credibility.getRating() !== null) && (Familiarity.getRating() !== null)) && (Valence.getRating() !== null))) {
-            continueRoutine = false;
+    if (key_resp.status === PsychoJS.Status.STARTED) {
+        keys = key_resp.getKeys(["space"], {"waitRelease": false});
+        if (keys) {
+            if ((((Credibility.getRating() !== null) && (Familiarity.getRating() !== null)) && (Valence.getRating() !== null))) {
+                continueRoutine = false;
+            }
         }
     }
     
@@ -1934,10 +1936,12 @@ function rate_corr_ruRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rate_corr
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if (((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null))) {
-            continueRoutine = false;
+    if (key_resp.status === PsychoJS.Status.STARTED) {
+        keys = key_resp.getKeys(["space"], {"waitRelease": false});
+        if (keys) {
+            if (((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null))) {
+                continueRoutine = false;
+            }
         }
     }
     
@@ -2170,10 +2174,12 @@ function ratings_enRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from code
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if (((((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null)) && (Valence_2.getRating() !== null)) && (Understanding.getRating() !== null))) {
-            continueRoutine = false;
+    if (key_resp_2.status === PsychoJS.Status.STARTED) {
+        keys = key_resp_2.getKeys(["space"], {"waitRelease": false});
+        if (keys) {
+            if (((((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null)) && (Valence_2.getRating() !== null)) && (Understanding.getRating() !== null))) {
+                continueRoutine = false;
+            }
         }
     }
     
@@ -2650,10 +2656,12 @@ function rate_corr_enRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rate_corr_2
-    keys = key_resp.getKeys(["space"], {"waitRelease": false});
-    if (keys) {
-        if (((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null))) {
-            continueRoutine = false;
+    if (press_2.status === PsychoJS.Status.STARTED) {
+        keys = press_2.getKeys(["space"], {"waitRelease": false});
+        if (keys) {
+            if (((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null))) {
+                continueRoutine = false;
+            }
         }
     }
     
