@@ -1278,7 +1278,8 @@ function trialRoutineBegin(snapshot) {
             trial_text = "ERROR: language not defined";
         }
     }
-    
+
+    text_count.setText(`${(trials.thisN + 1)}/${trials.nTotal}`);
     text.setText(instruction_text);
     image.setImage(headline);
     proceed_2.keys = undefined;
@@ -1288,6 +1289,7 @@ function trialRoutineBegin(snapshot) {
     trialMaxDuration = null
     // keep track of which components have finished
     trialComponents = [];
+    trialComponents.push(text_count);
     trialComponents.push(text);
     trialComponents.push(image);
     trialComponents.push(proceed_2);
