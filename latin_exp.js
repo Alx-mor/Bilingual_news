@@ -18,10 +18,7 @@ let expInfo = {
     'group': 'auto',
 };
 let PILOTING = util.getUrlParameters().has('__pilotToken');
-
-// ── Additional variables declared at module level ──
-let trial_text;
-
+let text_count;
 
 // Start code blocks for 'Before Experiment'
 // Run 'Before Experiment' code from setup_code
@@ -315,8 +312,8 @@ psychoJS.start({
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.INFO);
 
 
-let currentLoop;
-let frameDur;
+var currentLoop;
+var frameDur;
 async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
@@ -345,63 +342,63 @@ async function updateInfo() {
 }
 
 
-let setupClock;
-let list_version;
-let lang_map;
-let InstructionClock;
-let text_2;
-let proceed;
-let trialClock;
-let text_count;
-let text;
-let image;
-let proceed_2;
-let ratings_ruClock;
-let Credibility;
-let Familiarity;
-let Valence;
-let key_resp;
-let cred_text;
-let fam_text;
-let val_text;
-let text_continue;
-let corr_ruClock;
-let image_2;
-let overlay;
-let corr;
-let rate_corr_ruClock;
-let cred_corr;
-let text_cred;
-let conf_corr;
-let text_conf;
-let press;
-let proc;
-let ratings_enClock;
-let Credibility_2;
-let Familiarity_2;
-let Valence_2;
-let Understanding;
-let key_resp_2;
-let cred_text_2;
-let fam_text_2;
-let val_text_2;
-let und_text;
-let text_continue_2;
-let corr_enClock;
-let image_3;
-let overlay_2;
-let corr_2;
-let rate_corr_enClock;
-let cred_corr_2;
-let text_cred_2;
-let conf_corr_2;
-let text_conf_2;
-let press_2;
-let proc_2;
-let osfClock;
-let text_wait;
-let globalClock;
-let routineTimer;
+var setupClock;
+var list_version;
+var lang_map;
+var InstructionClock;
+var text_2;
+var proceed;
+var trialClock;
+var text_count;
+var text;
+var image;
+var proceed_2;
+var ratings_ruClock;
+var Credibility;
+var Familiarity;
+var Valence;
+var key_resp;
+var cred_text;
+var fam_text;
+var val_text;
+var text_continue;
+var corr_ruClock;
+var image_2;
+var overlay;
+var corr;
+var rate_corr_ruClock;
+var cred_corr;
+var text_cred;
+var conf_corr;
+var text_conf;
+var press;
+var proc;
+var ratings_enClock;
+var Credibility_2;
+var Familiarity_2;
+var Valence_2;
+var Understanding;
+var key_resp_2;
+var cred_text_2;
+var fam_text_2;
+var val_text_2;
+var und_text;
+var text_continue_2;
+var corr_enClock;
+var image_3;
+var overlay_2;
+var corr_2;
+var rate_corr_enClock;
+var cred_corr_2;
+var text_cred_2;
+var conf_corr_2;
+var text_conf_2;
+var press_2;
+var proc_2;
+var osfClock;
+var text_wait;
+var globalClock;
+var routineTimer;
 async function experimentInit() {
   // Initialize components for Routine "setup"
   setupClock = new util.Clock();
@@ -446,7 +443,19 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  text = new visual.TextStim({
+  text_count = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_count',
+    text: '',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0.4], draggable: false, height: 0.04,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+  
+    text = new visual.TextStim({
     win: psychoJS.window,
     name: 'text',
     text: '',
@@ -900,13 +909,13 @@ async function experimentInit() {
 }
 
 
-let t;
-let frameN;
-let continueRoutine;
-let routineForceEnded;
-let setupMaxDurationReached;
-let setupMaxDuration;
-let setupComponents;
+var t;
+var frameN;
+var continueRoutine;
+var routineForceEnded;
+var setupMaxDurationReached;
+var setupMaxDuration;
+var setupComponents;
 function setupRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -990,10 +999,10 @@ function setupRoutineEnd(snapshot) {
 }
 
 
-let InstructionMaxDurationReached;
-let _proceed_allKeys;
-let InstructionMaxDuration;
-let InstructionComponents;
+var InstructionMaxDurationReached;
+var _proceed_allKeys;
+var InstructionMaxDuration;
+var InstructionComponents;
 function InstructionRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1138,7 +1147,7 @@ function InstructionRoutineEnd(snapshot) {
 }
 
 
-let trials;
+var trials;
 function trialsLoopBegin(trialsLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1219,14 +1228,14 @@ function trialsLoopEndIteration(scheduler, snapshot) {
 }
 
 
-let trialMaxDurationReached;
-let current_set;
-let current_lang;
-let headline;
-let instruction_text;
-let _proceed_2_allKeys;
-let trialMaxDuration;
-let trialComponents;
+var trialMaxDurationReached;
+var current_set;
+var current_lang;
+var headline;
+var instruction_text;
+var _proceed_2_allKeys;
+var trialMaxDuration;
+var trialComponents;
 function trialRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1256,6 +1265,7 @@ function trialRoutineBegin(snapshot) {
         }
     }
     
+    text_count.setText(`${(trials.thisN + 1)}/${trials.nTotal}`);
     text_count.setText(`${(trials.thisN + 1)}/${trials.nTotal}`);
     text.setText(instruction_text);
     image.setImage(headline);
@@ -1302,7 +1312,22 @@ function trialRoutineEachFrame() {
     }
     
     
-    // *text* updates
+    // *text_count* updates
+    if (t >= 0.0 && text_count.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_count.tStart = t;  // (not accounting for frame time here)
+      text_count.frameNStart = frameN;  // exact frame index
+      
+      text_count.setAutoDraw(true);
+    }
+    
+    
+    // if text_count is active this frame...
+    if (text_count.status === PsychoJS.Status.STARTED) {
+    }
+    
+    
+        // *text* updates
     if (t >= 0.0 && text.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       text.tStart = t;  // (not accounting for frame time here)
@@ -1426,10 +1451,10 @@ function trialRoutineEnd(snapshot) {
 }
 
 
-let ratings_ruMaxDurationReached;
-let _key_resp_allKeys;
-let ratings_ruMaxDuration;
-let ratings_ruComponents;
+var ratings_ruMaxDurationReached;
+var _key_resp_allKeys;
+var ratings_ruMaxDuration;
+var ratings_ruComponents;
 function ratings_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1475,7 +1500,7 @@ function ratings_ruRoutineBegin(snapshot) {
 }
 
 
-let keys;
+var keys;
 function ratings_ruRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'ratings_ru' ---
@@ -1484,7 +1509,12 @@ function ratings_ruRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rating_code
-
+    keys = key_resp.getKeys(["space"], {"waitRelease": false});
+    if (keys) {
+        if ((((Credibility.getRating() !== null) && (Familiarity.getRating() !== null)) && (Valence.getRating() !== null))) {
+            continueRoutine = false;
+        }
+    }
     
     
     // *Credibility* updates
@@ -1555,12 +1585,8 @@ function ratings_ruRoutineEachFrame() {
         key_resp.keys = _key_resp_allKeys[_key_resp_allKeys.length - 1].name;  // just the last key pressed
         key_resp.rt = _key_resp_allKeys[_key_resp_allKeys.length - 1].rt;
         key_resp.duration = _key_resp_allKeys[_key_resp_allKeys.length - 1].duration;
-        // only end routine if all sliders are rated
-        if ((Credibility.getRating() !== null) && (Familiarity.getRating() !== null) && (Valence.getRating() !== null)) {
-          continueRoutine = false;
-        } else {
-          _key_resp_allKeys = [];  // clear buffer so Space must be pressed again after rating
-        }
+        // a response ends the routine
+        continueRoutine = false;
       }
     }
     
@@ -1691,10 +1717,10 @@ function ratings_ruRoutineEnd(snapshot) {
 }
 
 
-let corr_ruMaxDurationReached;
-let corr_img;
-let corr_ruMaxDuration;
-let corr_ruComponents;
+var corr_ruMaxDurationReached;
+var corr_img;
+var corr_ruMaxDuration;
+var corr_ruComponents;
 function corr_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1739,7 +1765,7 @@ function corr_ruRoutineBegin(snapshot) {
 }
 
 
-let frameRemains;
+var frameRemains;
 function corr_ruRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'corr_ru' ---
@@ -1879,10 +1905,10 @@ function corr_ruRoutineEnd(snapshot) {
 }
 
 
-let rate_corr_ruMaxDurationReached;
-let _press_allKeys;
-let rate_corr_ruMaxDuration;
-let rate_corr_ruComponents;
+var rate_corr_ruMaxDurationReached;
+var _press_allKeys;
+var rate_corr_ruMaxDuration;
+var rate_corr_ruComponents;
 function rate_corr_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1933,7 +1959,12 @@ function rate_corr_ruRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rate_corr
-
+    keys = key_resp.getKeys(["space"], {"waitRelease": false});
+    if (keys) {
+        if (((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null))) {
+            continueRoutine = false;
+        }
+    }
     
     
     // *cred_corr* updates
@@ -2019,12 +2050,8 @@ function rate_corr_ruRoutineEachFrame() {
         press.keys = _press_allKeys[_press_allKeys.length - 1].name;  // just the last key pressed
         press.rt = _press_allKeys[_press_allKeys.length - 1].rt;
         press.duration = _press_allKeys[_press_allKeys.length - 1].duration;
-        // only end routine if all sliders are rated
-        if ((cred_corr.getRating() !== null) && (conf_corr.getRating() !== null)) {
-          continueRoutine = false;
-        } else {
-          _press_allKeys = [];  // clear buffer so Space must be pressed again after rating
-        }
+        // a response ends the routine
+        continueRoutine = false;
       }
     }
     
@@ -2108,10 +2135,10 @@ function rate_corr_ruRoutineEnd(snapshot) {
 }
 
 
-let ratings_enMaxDurationReached;
-let _key_resp_2_allKeys;
-let ratings_enMaxDuration;
-let ratings_enComponents;
+var ratings_enMaxDurationReached;
+var _key_resp_2_allKeys;
+var ratings_enMaxDuration;
+var ratings_enComponents;
 function ratings_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2168,7 +2195,12 @@ function ratings_enRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from code
-
+    keys = key_resp.getKeys(["space"], {"waitRelease": false});
+    if (keys) {
+        if (((((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null)) && (Valence_2.getRating() !== null)) && (Understanding.getRating() !== null))) {
+            continueRoutine = false;
+        }
+    }
     
     
     // *Credibility_2* updates
@@ -2254,12 +2286,8 @@ function ratings_enRoutineEachFrame() {
         key_resp_2.keys = _key_resp_2_allKeys[_key_resp_2_allKeys.length - 1].name;  // just the last key pressed
         key_resp_2.rt = _key_resp_2_allKeys[_key_resp_2_allKeys.length - 1].rt;
         key_resp_2.duration = _key_resp_2_allKeys[_key_resp_2_allKeys.length - 1].duration;
-        // only end routine if all sliders are rated
-        if ((Credibility_2.getRating() !== null) && (Familiarity_2.getRating() !== null) && (Valence_2.getRating() !== null) && (Understanding.getRating() !== null)) {
-          continueRoutine = false;
-        } else {
-          _key_resp_2_allKeys = [];  // clear buffer so Space must be pressed again after rating
-        }
+        // a response ends the routine
+        continueRoutine = false;
       }
     }
     
@@ -2407,9 +2435,9 @@ function ratings_enRoutineEnd(snapshot) {
 }
 
 
-let corr_enMaxDurationReached;
-let corr_enMaxDuration;
-let corr_enComponents;
+var corr_enMaxDurationReached;
+var corr_enMaxDuration;
+var corr_enComponents;
 function corr_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2593,10 +2621,10 @@ function corr_enRoutineEnd(snapshot) {
 }
 
 
-let rate_corr_enMaxDurationReached;
-let _press_2_allKeys;
-let rate_corr_enMaxDuration;
-let rate_corr_enComponents;
+var rate_corr_enMaxDurationReached;
+var _press_2_allKeys;
+var rate_corr_enMaxDuration;
+var rate_corr_enComponents;
 function rate_corr_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2647,7 +2675,12 @@ function rate_corr_enRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from rate_corr_2
-
+    keys = key_resp.getKeys(["space"], {"waitRelease": false});
+    if (keys) {
+        if (((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null))) {
+            continueRoutine = false;
+        }
+    }
     
     
     // *cred_corr_2* updates
@@ -2733,12 +2766,8 @@ function rate_corr_enRoutineEachFrame() {
         press_2.keys = _press_2_allKeys[_press_2_allKeys.length - 1].name;  // just the last key pressed
         press_2.rt = _press_2_allKeys[_press_2_allKeys.length - 1].rt;
         press_2.duration = _press_2_allKeys[_press_2_allKeys.length - 1].duration;
-        // only end routine if all sliders are rated
-        if ((cred_corr_2.getRating() !== null) && (conf_corr_2.getRating() !== null)) {
-          continueRoutine = false;
-        } else {
-          _press_2_allKeys = [];  // clear buffer so Space must be pressed again after rating
-        }
+        // a response ends the routine
+        continueRoutine = false;
       }
     }
     
@@ -2822,9 +2851,9 @@ function rate_corr_enRoutineEnd(snapshot) {
 }
 
 
-let osfMaxDurationReached;
-let osfMaxDuration;
-let osfComponents;
+var osfMaxDurationReached;
+var osfMaxDuration;
+var osfComponents;
 function osfRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2847,7 +2876,7 @@ function osfRoutineBegin(snapshot) {
     // Extract data object from experiment
     let dataObj = psychoJS._experiment._trialsData; 
     // Convert data object to CSV
-    let data = [Object.keys(dataObj[0])].concat(dataObj).map(it => { 
+    let data = [Object.keys(databObj[0])].concat(databObj).map(it => { 
     return Object.values(it).toString()
     }).join('\n')
     // Send data to OSF via DataPipe 
