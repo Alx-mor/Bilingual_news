@@ -422,8 +422,8 @@ psychoJS.start({
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.INFO);
 
 
-//var currentLoop;
-var frameDur;
+// currentLoop;
+//var frameDur;
 async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
@@ -452,63 +452,6 @@ async function updateInfo() {
 }
 
 
-var setupClock;
-var list_version;
-var lang_map;
-var InstructionClock;
-var text_2;
-var proceed;
-var trialClock;
-var text_count;
-var text;
-var image;
-var proceed_2;
-var ratings_ruClock;
-var Credibility;
-var Familiarity;
-var Valence;
-var key_resp;
-var cred_text;
-var fam_text;
-var val_text;
-var text_continue;
-var corr_ruClock;
-var image_2;
-var overlay;
-var corr;
-var rate_corr_ruClock;
-var cred_corr;
-var text_cred;
-var conf_corr;
-var text_conf;
-var press;
-var proc;
-var ratings_enClock;
-var Credibility_2;
-var Familiarity_2;
-var Valence_2;
-var Understanding;
-var key_resp_2;
-var cred_text_2;
-var fam_text_2;
-var val_text_2;
-var und_text;
-var text_continue_2;
-var corr_enClock;
-var image_3;
-var overlay_2;
-var corr_2;
-var rate_corr_enClock;
-var cred_corr_2;
-var text_cred_2;
-var conf_corr_2;
-var text_conf_2;
-var press_2;
-var proc_2;
-var osfClock;
-var text_wait;
-var globalClock;
-var routineTimer;
 async function experimentInit() {
   // Initialize components for Routine "setup"
   setupClock = new util.Clock();
@@ -1007,13 +950,7 @@ async function experimentInit() {
 }
 
 
-var t;
-var frameN;
-var continueRoutine;
-var routineForceEnded;
-var setupMaxDurationReached;
-var setupMaxDuration;
-var setupComponents;
+
 function setupRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1097,10 +1034,7 @@ function setupRoutineEnd(snapshot) {
 }
 
 
-var InstructionMaxDurationReached;
-var _proceed_allKeys;
-var InstructionMaxDuration;
-var InstructionComponents;
+
 function InstructionRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1245,7 +1179,7 @@ function InstructionRoutineEnd(snapshot) {
 }
 
 
-var trials;
+
 function trialsLoopBegin(trialsLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1326,14 +1260,7 @@ function trialsLoopEndIteration(scheduler, snapshot) {
 }
 
 
-var trialMaxDurationReached;
-var current_set;
-var current_lang;
-var headline;
-var instruction_text;
-var _proceed_2_allKeys;
-var trialMaxDuration;
-var trialComponents;
+
 function trialRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1533,10 +1460,7 @@ function trialRoutineEnd(snapshot) {
 }
 
 
-var ratings_ruMaxDurationReached;
-var _key_resp_allKeys;
-var ratings_ruMaxDuration;
-var ratings_ruComponents;
+
 function ratings_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1582,7 +1506,6 @@ function ratings_ruRoutineBegin(snapshot) {
 }
 
 
-var keys;
 function ratings_ruRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'ratings_ru' ---
@@ -1799,10 +1722,6 @@ function ratings_ruRoutineEnd(snapshot) {
 }
 
 
-var corr_ruMaxDurationReached;
-var corr_img;
-var corr_ruMaxDuration;
-var corr_ruComponents;
 function corr_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1847,7 +1766,6 @@ function corr_ruRoutineBegin(snapshot) {
 }
 
 
-var frameRemains;
 function corr_ruRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'corr_ru' ---
@@ -1987,10 +1905,6 @@ function corr_ruRoutineEnd(snapshot) {
 }
 
 
-var rate_corr_ruMaxDurationReached;
-var _press_allKeys;
-var rate_corr_ruMaxDuration;
-var rate_corr_ruComponents;
 function rate_corr_ruRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2217,10 +2131,6 @@ function rate_corr_ruRoutineEnd(snapshot) {
 }
 
 
-var ratings_enMaxDurationReached;
-var _key_resp_2_allKeys;
-var ratings_enMaxDuration;
-var ratings_enComponents;
 function ratings_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2517,9 +2427,6 @@ function ratings_enRoutineEnd(snapshot) {
 }
 
 
-var corr_enMaxDurationReached;
-var corr_enMaxDuration;
-var corr_enComponents;
 function corr_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2703,10 +2610,6 @@ function corr_enRoutineEnd(snapshot) {
 }
 
 
-var rate_corr_enMaxDurationReached;
-var _press_2_allKeys;
-var rate_corr_enMaxDuration;
-var rate_corr_enComponents;
 function rate_corr_enRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2933,9 +2836,6 @@ function rate_corr_enRoutineEnd(snapshot) {
 }
 
 
-var osfMaxDurationReached;
-var osfMaxDuration;
-var osfComponents;
 function osfRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
